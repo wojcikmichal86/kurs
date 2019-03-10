@@ -13,8 +13,19 @@ def load_offer(_offer):
 def get_details(_data):
     selector = Selector(text=_data)
 
+    if 'Faktura VAT' in str(selector.xpath('//span[@class="offer-price__details"]/text()').get()):
+        print('Faktura: Tak')
+    else:
+        print('Faktura: Nie')
+
+    """
+    if 'Cena Brutto' in str(selector.xpath('//span[@class="offer-price__details"]/text()').get()):
+        print('Cena Brutto: Tak')
+    else:
+        print('Cena Brutto: Nie')
+    """
     # selector xpath object wskazujący na tytuł strony
-    print(selector.xpath('//title/text()'))
+    #print(selector.xpath('//title/text()'))
 
     # by wydobyć tekst z HTML trzeba skorzystać z konstrukcji poniżej
     print(selector.xpath('//title/text()').get())  # pojedynczy, pierwszy rezultat

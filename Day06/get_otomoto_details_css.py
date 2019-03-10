@@ -15,17 +15,26 @@ def get_details(_data):
 
     # selector css object wskazujący na tytuł strony
     # zapisy alternatywne
-    print(selector.css('title::text'))
-    print(selector.css('head > title::text'))
+    #print(selector.css('title::text'))
+    #print(selector.css('head > title::text'))
 
     # by wydobyć tekst z HTML trzeba skorzystać z konstrukcji poniżej
     # zapisy alternatywne
-    print(selector.css('title::text').get())
-    print(selector.css('head > title::text').get())
+    #print(selector.css('title::text').get())
+    #print(selector.css('head > title::text').get())
 
     # TODO: dodaj kolejne etykietki
     # Uwaga! - Te selektory zostały wygenerowane przez Chrome. FF może zapisać inaczej
-
+    if 'Faktura VAT' in str(selector.css('span.offer-price__details:nth-child(2)::text').get()):
+        print('Faktura: Tak')
+    else:
+        print('Faktura: Nie')
+    """
+    if 'Cena Brutto' in str(selector.css('span.offer-price__details:nth-child(2)::text').get()):
+        print('Cena Brutto: Tak')
+    else:
+        print('Cena Brutto: Nie')
+    """
     print(selector.css('#parameters > ul:nth-child(1) > li:nth-child(2) > span::text').get(), ' ', end="")
     print(selector.css('#parameters > ul:nth-child(1) > li:nth-child(2) > div > a::attr(title)').get())
     print('Marka: '+selector.css('#parameters > ul:nth-child(1) > li:nth-child(3) > div > a::attr(title)').get())
