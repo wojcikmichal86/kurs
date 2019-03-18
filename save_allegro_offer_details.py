@@ -65,13 +65,6 @@ class Oferta:
     def __init__(self, name, details):
         self.name = name
         self.details = details
-    def get_name(self):
-        return self.name
-
-    def get_details(self):
-        return self.details
-
-
 
 offers = os.listdir('offers')
 results={}
@@ -79,7 +72,7 @@ for offer in offers:
     print(offer)
     data = load_offer(offer)
     oferta = Oferta(offer, get_details(data))
-    results[oferta.get_name()]=oferta.get_details()
+    results[oferta.name]= oferta.details
 with open('oferty.json', 'w', encoding='utf-8') as input_file:
     json.dump(results, input_file, ensure_ascii=False, indent=4)
 
